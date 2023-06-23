@@ -4,7 +4,7 @@
 export PYSPARK_PYTHON=python3
 export PYSPARK_DRIVER_PYTHON=python3
 export HADOOP_DIR=/home/bigdata2022/hadoop-3.3.4
-export SPARK_HOME=/home/bigdata2022/spark-3.2.4
+export SPARK_HOME=/home/bigdata2022/spark-3.3.0
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HADOOP_DIR/bin:$HADOOP_DIR/sbin
 
 #STOPPING HADOOP
