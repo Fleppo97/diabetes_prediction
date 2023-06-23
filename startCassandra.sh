@@ -24,7 +24,7 @@ $HADOOP_DIR/bin/hdfs dfs -mkdir -p hdfs://localhost:9000/Input
 $HADOOP_DIR/bin/hdfs dfs -rm -r /Input/diabetes_database.csv
 
 #LOADING INPUT IN HDFS
-$HADOOP_DIR/bin/hdfs dfs -put ./res/Input/diabetes_database.csv hdfs://localhost:9000/Input/
+$HADOOP_DIR/bin/hdfs dfs -put ./res/input/diabetes_database.csv hdfs://localhost:9000/Input/
 
 #GIVING THE RIGHT PERMISSION
 $HADOOP_DIR/bin/hdfs dfs -chmod 750 /Input/diabetes_database.csv
