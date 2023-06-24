@@ -20,20 +20,46 @@ import traceback
 # Inizializing Spark context and Dataframe #
 ############################################
 # Creating spark session and context
-spark=SparkSession.builder.appName('DiabetesPreProcessing').getOrCreate()
-spark.conf.set("spark.cassandra.connection.host", "localhost")  # Indirizzo IP o nome host di Cassandra
-spark.conf.set("spark.cassandra.connection.port", "9042")  # Porta di Cassandra (di solito 9042)
+
+spark = SparkSession.builder \
+    .appName('DiabetesPrediction') \
+    .config('spark.cassandra.connection.host', 'localhost') \
+    .config('spark.cassandra.auth.username', 'cassandra') \
+    .config('spark.cassandra.auth.password', 'cassandra') \
+    .config("spark.jars.packages", "com.datastax.spark:spark-cassandra-connector_2.11:2.5.1")\
+    .getOrCreate()
+
+# Caricamento dei dati da Cassandra
+df_unbalanced = spark.read.format('org.apache.spark.sql.cassandra') \
+    .option('table', 'features') \
+    .option('keyspace', 'diabetes_dataset') \
+    .load()
+
+    
 sc = spark.sparkContext
 
 try:
     print("#"*200)
     print("CARICO CASSANDRA")
-    # Creating spark dataframe from Cassandra db 
-    df_unbalanced= spark.read.format("org.apache.spark.sql.cassandra").options(table="features",keyspace="diabetes_dataset").load()
-    df_unbalanced= df_unbalanced.drop("id")
-    df_pd = df_unbalanced.toPandas()
-    print("#"*200)
+    
+    df_unbalanced = spark.read.format("org.apache.spark.sql.cassandra") \
+    .option("table", "features") \
+    .option("keyspace", "diabetes_dataset") \
+    .option("partitioner", "org.apache.spark.sql.cassandra.DefaultSource") \
+    .option("spark.cassandra.auth.username", "cassandra") \
+    .option("spark.cassandra.auth.password", "cassandra") \
+    .load()          #non funziona con spark 3.3 quindi lo cancello e installo 3.2.2
 
+    
+    # Creating spark dataframe from Cassandra db 
+    #df_unbalanced= #spark.read.format("org.apache.spark.sql.cassandra").options(table="features",keyspace="diabetes_dataset").load()
+ #   df_unbalanced= df_unbalanced.drop("id")
+  #  df_pd = df_unbalanced.toPandas()
+    print("#"*200)
+    print("OPERAZIONE RIUSCITA")
+    print("#"*200)
+    print(df_unbalanced.count())
+    print("#"*200)
 
     ############################################
     ###### Anlizing dataset with charts ########
@@ -47,7 +73,7 @@ try:
     features = ["diabetes_binary", "highbp", "highchol", "cholcheck", "bmi", "smoker", "stroke", "heartdiseaseorattack", "physactivity", "fruits", "veggies", "hvyalcoholconsump", "anyhealthcare", "nodocbccost", "genhlth", "menthlth", "physhlth", "diffwalk", "sex", "age", "education", "income"]
     
 
-    
+    df_pd = df_unbalanced.toPandas()
 
     # Create features charts
     def plotContinuousChart(xLabel):
