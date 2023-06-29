@@ -1,0 +1,687 @@
+<!doctype html>
+
+<html lang="it">
+
+   <head>
+
+      <meta charset="utf-8">
+
+      <title>Diabetes Prediction</title>
+
+      <link href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css" rel="stylesheet" type="text/css">
+
+      <link href='http://fonts.googleapis.com/css?family=Wendy+One|Donegal+One|Fjalla+One' rel='stylesheet' type='text/css'>
+
+      <link href="css/main.css" rel="stylesheet" type="text/css">
+
+   </head>
+
+   <body>
+
+      <div class="slideshow-container">
+
+      <div class="mySlides fade">
+
+         <div class="title">
+
+            <h1 class="title"> Diabet Statistics </h1>
+
+         </div>
+
+         <div class="grid10404010">
+
+            <div></div>
+
+            <div class="centeredDiv">
+
+               <img height="600" src="../server/output/correlation.png">
+
+            </div>
+
+            <div class="centeredDiv">
+
+               <img height="600" src="../server/output/diabetes_binary.png">
+
+            </div>
+
+            <div></div>
+
+         </div>
+
+      </div> <!-- end prima slide-->
+
+      <div class="mySlides fade"> <!-- iniza seconda slide-->
+
+      <div class="title">
+
+         <h1 class="title"> Diabetic Patient </h1>
+
+      </div>
+
+      <div class="centeredDiv">
+
+         <select onchange="showCharts(this.value)" required>
+
+            <option value="diabetes_binary">Diabetes</option>
+
+            <option value="highbp">High Blood Pressure</option>
+
+            <option value="highchol">High Cholesterol</option>
+
+            <option value="cholcheck">Cholesterol Check</option>
+
+            <option value="bmi">BMI</option>
+
+            <option value="smoker">Smoker</option>
+
+            <option value="stroke">Stroke</option>
+
+            <option value="heartdiseaseorattack">Heart Disease or Attack</option>
+
+            <option value="physactivity">Physical Activity</option>
+
+            <option value="fruits">Fruits Consumption</option>
+
+            <option value="veggies">Vegetables Consumption</option>
+
+            <option value="hvyalcoholconsump">Heavy Alcohol Consumption</option>
+
+            <option value="anyhealthcare">Any Healthcare</option>
+
+            <option value="genhlth">General Health</option>
+
+            <option value="menthlth">Mental Health</option>
+
+            <option value="physhlth">Physical Health</option>
+
+            <option value="diffwalk">Difficulty Walking</option>
+
+            <option value="sex">Sex</option>
+
+            <option value="age">Age</option>
+
+            <option value="income">Income</option>
+
+            <option value="education">Education</option>
+
+         </select>
+
+      </div>
+
+      <div class="slideshow-inner-container">
+
+         <div class="myInnerSlides fade centeredDiv" id="age">
+
+            <img height="500" src="../server/output/age.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="diabetes_binary">
+
+            <img height="500" src="../server/output/diabetes_binary.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="sex">
+
+            <img height="500" src="../server/output/sex.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="education">
+
+            <img height="500" src="../server/output/education.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="income">
+
+            <img height="500" src="../server/output/income.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="highbp">
+
+            <img height="500" src="../server/output/highbp.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="highchol">
+
+            <img height="500" src="../server/output/highchol.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="cholcheck">
+
+            <img height="500" src="../server/output/cholcheck.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="bmi">
+
+            <img height="500" src="../server/output/bmi.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="smoker">
+
+            <img height="500" src="../server/output/smoker.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="stroke">
+
+            <img height="500" src="../server/output/stroke.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="heartdiseaseorattack">
+
+            <img height="500" src="../server/output/heartdiseaseorattack.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="physactivity">
+
+            <img height="500" src="../server/output/physactivity.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="fruits">
+
+            <img height="500" src="../server/output/fruits.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="veggies">
+
+            <img height="500" src="../server/output/veggies.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="hvyalcoholconsump">
+
+            <img height="500" src="../server/output/hvyalcoholconsump.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="anyhealthcare">
+
+            <img height="500" src="../server/output/anyhealthcare.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="genhlth">
+
+            <img height="500" src="../server/output/genhlth.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="menthlth">
+
+            <img height="500" src="../server/output/menthlth.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="physhlth">
+
+            <img height="500" src="../server/output/physhlth.png">
+
+         </div>
+
+         <div class="myInnerSlides fade centeredDiv" id="diffwalk">
+
+            <img height="500" src="../server/output/diffwalk.png">
+
+         </div>
+
+       </div>
+
+       </div> <!-- fine seconda slide-->
+
+            <div class="mySlides fade"> <!-- inizio terza slide-->
+
+            <div class="title">
+
+               <h1 class="slideTitle"> Diabet prediction model </h1>
+
+            </div>
+
+            <div class="grid10404010">
+
+               <div></div>
+
+               <div class="centeredDiv">
+
+                  <h1 style="margin: 0px;"> Confusion matrix </h1>
+
+                  <br>
+
+                  <img height="505" src="../server/output/confusionMatrix.png">
+
+               </div>
+
+               <div class="scrollbar_div">
+
+                  <h1 class="slideTitle"> Prediction </h1>
+
+                  <br>
+
+                  <div>Do you currently have diabet?</div>
+
+                        <br>
+
+                        <select id="DiabetResponse_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                  <div class="inputs">
+
+                     <div class="tab">
+
+                        Are you male or female?<br><br>
+
+                        <select id="Sex_opt" required>
+
+                           <option value="1">Male</option>
+
+                           <option value="0">Female</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Your age:<br><br>
+
+                        <select id="AgeCategory_opt" required>
+
+                           <option value="20">20-24</option>
+
+                           <option value="25">25-29</option>
+
+                           <option value="30">30-34</option>
+
+                           <option value="35">35-39</option>
+
+                           <option value="40">40-44</option>
+
+                           <option value="45">45-49</option>
+
+                           <option value="50">50-54</option>
+
+                           <option value="55">55-59</option>
+
+                           <option value="60">60-64</option>
+
+                           <option value="65">65-69</option>
+
+                           <option value="70">70-74</option>
+
+                           <option value="75">75-79</option>
+
+                           <option value="80">80 or older</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Do you have high cholesterol?:<br><br>
+
+                        <select id="HighChol_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Have you checked yor cholesterol in the last 5 years?:<br><br>
+
+                        <select id="CholCheck_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Do you have high BP?:<br><br>
+
+                        <select id="HighBP_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Do you have any Health-Care coverage?:<br><br>
+
+                        <select id="AnyHealthCare_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">Body Mass Index (BMI):<br><br>
+
+                        <input type="number" id="BMI_opt" min="0" max="100" value="22">
+
+                     </div>
+
+                     <div class="tab">
+
+                        Have you smoked at least 100 cigarettes in your entire life?<br><br>
+
+                        <select id="Smoking_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Heavy drinkers (more than 10 drinks per week)<br><br>
+
+                        <select id="AlcoholDrinking_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">Do you eat veggies daily?<br><br>
+
+                        <select id="Veggies_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">Do you eat fruits daily?<br><br>
+
+                        <select id="Fruits_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Have you did exercise during the past 30 days?<br><br>
+
+                        <select id="PhysicalActivity_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Do you have any difficoult to walk?<br><br>
+
+                        <select id="DiffWalking_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Ever told you had a stroke?<br><br>
+
+                        <select id="Stroke_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Did you have Miocardic infart or hearth disease?<br><br>
+
+                        <select id="HearthDisease_opt" required>
+
+                           <option value="1">Yes</option>
+
+                           <option value="0">No</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">How many physical illness or injury days in past 30 days?<br><br>
+
+                        <input type="number" id="PhysicalHealt_opt" min="0" max="30" value="0">
+
+                     </div>
+
+                     <div class="tab">For how many days during the past 30 was your mental health not good?<br><br>
+
+                        <input type="number" id="MentalHealth_opt" min="0" max="30" value="0">
+
+                     </div>
+
+                     
+
+                     <div class="tab">
+
+                        Would you say that in general your health is...<br><br>
+
+                        <select id="GenHealth_opt" required>
+
+                           <option value="5">Poor</option>
+
+                           <option value="4">Fair</option>
+
+                           <option value="3">Good</option>
+
+                           <option value="2">Very good</option>
+
+                           <option value="1">Excellent</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Whats your education level?<br><br>
+
+                        <select id="Education_opt" required>
+
+                           <option value="6">College 4 years or more </option>
+
+                           <option value="5">College 1 year to 3 years </option>
+
+                           <option value="4">Grade 12 or GED </option>
+
+                           <option value="3"> Grades 9 through 11</option>
+
+                           <option value="2"> Grades 1 through 8 </option>
+
+                           <option value="1"> Never attended school</option>
+
+                        </select>
+
+                     </div>
+
+                     <div class="tab">
+
+                        Whats your Income in a year?<br><br>
+
+                        <select id="Income_opt" required>
+
+                           <option value="8">$75,000 or more</option>
+
+                           <option value="7">$50,000 to less than $75,000</option>
+
+                           <option value="6"> $35,000 to less than $50,000</option>
+
+                           <option value="5"> $25,000 to less than $35,000</option>
+
+                           <option value="4">$20,000 to less than $25,000</option>
+
+                           <option value="3"> $15,000 to less than $20,000</option>
+
+                           <option value="2">  $10,000 to less than $15,000</option>
+
+                           <option value="1"> Less than $10,000</option>
+
+                        </select>
+
+                     </div>
+
+                     <!-- 
+
+                     <div class="tab">
+
+                        <div class="centeredDiv">
+
+                           <img src="./res/loading.gif">
+
+                        </div>
+
+                     </div>
+
+                     -->
+
+                     <div id="results" class="tab">
+
+                        <div>Per aggiungere i dati premere "Register"</div>
+
+                        <br>
+
+                        <div>Per predire premere "Predict"</div>
+
+                        
+
+                        <br>
+
+                        
+
+                        <button type="submit" id="registerResponse" onclick="registerResponse()">Register response</button>
+
+                     </div>
+
+                     
+
+                     </div>
+
+                     
+
+                     <div class="buttonContainer;">
+
+                        <button type="submit" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+
+                        <button type="submit" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
+                        <button type="submit" id="submitBtn" onclick="getPrediction()">Predict</button>
+
+                     </div>
+
+                  </div>
+
+                  <div id="resultsContainer">
+
+			  <h2>Risultati della valutazione</h2>
+
+			  <p>Valore Reale: <span id="diabetesBinary"></span></p>
+
+			  <p>Predizione: <span id="prediction"></span></p>
+
+			  <div>
+
+			  <p>Confidenza del risultato:</p>
+
+			  <p>Probabilità (0): <span id="probability0"></span></p>
+
+			  <p>Probabilità (1): <span id="probability1"></span></p>
+
+			  </div>
+
+		</div>
+
+               </div>
+
+            </div> <!-- fine terza slide-->
+
+         </div>
+
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <br>
+
+      <div class="centeredDiv">
+
+         <span class="dot" onclick="currentSlide(1)"></span>
+
+         <span class="dot" onclick="currentSlide(2)"></span>
+
+         <span class="dot" onclick="currentSlide(3)"></span>
+
+      </div>
+
+      <script src="js/controller.js"></script>
+
+      <script src="js/request.js"></script>
+
+   </body>
+
+</html>
