@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+
+
+* {box-sizing:border-box}
+
+
+
+html, body {
+
+  height: 100%;
+
+}
+
+
+
+body {
+
+  background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("../res/sfondo.png");
+
+  background-size:cover;
+
+  background-repeat: no-repeat;
+
+  font-family: poppins;
+
+}
+
+
+
+
+
+
+
+
+
+/**** Style for buttons ****/
+
+button {
+
+  color: white;
+
+  margin-top: 20px;
+
+  background: #1DA1F2;
+
+  height: 40px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+
+  transition: 0.5s;
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+}
+
+
+
+button:hover {
+
+  box-shadow: none;
+
+}
+
+
+
+
+
+
+
+
+
+/**** Style for form  ****/
+
+.scrollbar_div {
+
+  position: relative;
+
+  width: 400px;
+
+  height: 587px;
+
+  border-radius: 20px;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: #ecf0f3;
+
+  float:left;
+
+  align-items: center;
+
+  text-align: center;
+
+  justify-content: center;
+
+  place-items: center;
+
+}
+
+
+
+.inputs {
+
+  text-align: left;
+
+  align-items: center;
+
+}
+
+
+
+input {
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+}
+
+
+
+input::placeholder {
+
+  color: gray;
+
+}
+
+
+
+input, select {
+
+  background: #ecf0f3;
+
+  padding: 10px;
+
+  padding-left: 20px;
+
+  height: 50px;
+
+  font-size: 14px;
+
+  border-radius: 10px;
+
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+select {
+
+  min-width:50%;
+
+}
+
+
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+  height: 10px;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  border-radius: 8px;
+
+  background: #c2c9d2;
+
+}
+
+
+
+.tab {
+
+  display: none;
+
+}
+
+
+
+
+
+
+
+
+
+/* Slideshow container */
+
+.slideshow-container {
+
+  position: relative;
+
+  margin: auto;
+
+  height: 550;
+
+  display:block;
+
+}
+
+
+
+.mySlides {
+
+  display: none;
+
+  height: 550;
+
+}
+
+
+
+.slideshow-inner-container {
+
+  position: relative;
+
+  margin: auto;
+
+  display:block;
+
+}
+
+
+
+.myInnerSlides {
+
+  display: none;
+
+}
+
+
+
+.prev, .next {
+
+  cursor: pointer;
+
+  position: absolute;
+
+  top: 50%;
+
+  width: auto;
+
+  margin-top: -22px;
+
+  padding: 16px;
+
+  color: white;
+
+  font-weight: bold;
+
+  font-size: 18px;
+
+  transition: 0.6s ease;
+
+  border-radius: 0 3px 3px 0;
+
+  user-select: none;
+
+}
+
+
+
+.next {
+
+  right: 0;
+
+  border-radius: 3px 0 0 3px;
+
+}
+
+
+
+.prev:hover, .next:hover {
+
+  background-color: rgba(0,0,0,0.8);
+
+}
+
+
+
+.dot {
+
+  cursor: pointer;
+
+  height: 30px;
+
+  width: 30px;
+
+  margin: 0 2px;
+
+  background-color: #bbb;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  transition: background-color 0.6s ease;
+
+}
+
+
+
+.active, .dot:hover {
+
+  background-color: #717171;
+
+}
+
+
+
+.fade {
+
+  animation-name: fade;
+
+  animation-duration: 1.5s;
+
+}
+
+
+
+@keyframes fade {
+
+  from {opacity: .4}
+
+  to {opacity: 1}
+
+}
+
+
+
+#resultsContainer {
+
+  background-color: #f9f9f9;
+
+  padding: 20px;
+
+  margin-top: 20px;
+
+  margin-right: 200px;
+
+  border-radius: 5px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+#resultsContainer h2 {
+
+  font-size: 24px;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+#resultsContainer p {
+
+  font-size: 16px;
+
+  margin-bottom: 8px;
+
+}
+
+
+
+#resultsContainer span {
+
+  font-weight: bold;
+
+}
+
+
+
+
+
+/* Slides */
+
+.title {
+
+  text-align: center;
+
+  font-size: 2em;
+
+  margin-bottom:30px;
+
+  margin-top:15px;
+
+}
+
+
+
+.slideTitle {
+
+  margin-bottom:15px;
+
+  margin-top:15px;
+
+}
+
+
+
+.slideGrid702010 {
+
+  display: grid;
+
+  grid-template-columns: 70% 20% 10%;
+
+  justify-items: center;
+
+}
+
+
+
+.grid10404010 {
+
+  display: grid;
+
+  grid-template-columns: 10% 40% 40% 10%;
+
+  justify-items: center;
+
+}
+
+
+
+
+
+
+
+
+
+/* Images */
+
+.centeredDiv {
+
+  text-align: center;
+
+}
+
+
+
+.leftDiv {
+
+  text-align: left;
+
+}
+
+
+
+
+
+
+
+/* Button container */
+
+.buttonContainer {
+
+  overflow: auto;
+
+}
