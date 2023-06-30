@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
+	<Header>
+		<Application name="JPMML-SparkML library" version="2.2.0"/>
+		<Timestamp>2023-06-29T18:44:05Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="age" optype="continuous" dataType="double"/>
+		<DataField name="anyhealthcare" optype="continuous" dataType="double"/>
+		<DataField name="bmi" optype="continuous" dataType="double"/>
+		<DataField name="cholcheck" optype="continuous" dataType="double"/>
+		<DataField name="diffwalk" optype="continuous" dataType="double"/>
+		<DataField name="education" optype="continuous" dataType="double"/>
+		<DataField name="fruits" optype="continuous" dataType="double"/>
+		<DataField name="genhlth" optype="continuous" dataType="double"/>
+		<DataField name="heartdiseaseorattack" optype="continuous" dataType="double"/>
+		<DataField name="highbp" optype="continuous" dataType="double"/>
+		<DataField name="highchol" optype="continuous" dataType="double"/>
+		<DataField name="hvyalcoholconsump" optype="continuous" dataType="double"/>
+		<DataField name="income" optype="continuous" dataType="double"/>
+		<DataField name="menthlth" optype="continuous" dataType="double"/>
+		<DataField name="physactivity" optype="continuous" dataType="double"/>
+		<DataField name="physhlth" optype="continuous" dataType="double"/>
+		<DataField name="sex" optype="continuous" dataType="double"/>
+		<DataField name="smoker" optype="continuous" dataType="double"/>
+		<DataField name="stroke" optype="continuous" dataType="double"/>
+		<DataField name="veggies" optype="continuous" dataType="double"/>
+		<DataField name="diabetes_binary" optype="categorical" dataType="double">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+	</DataDictionary>
+	<RegressionModel functionName="classification" normalizationMethod="logit">
+		<MiningSchema>
+			<MiningField name="diabetes_binary" usageType="target"/>
+			<MiningField name="age"/>
+			<MiningField name="anyhealthcare"/>
+			<MiningField name="bmi"/>
+			<MiningField name="cholcheck"/>
+			<MiningField name="diffwalk"/>
+			<MiningField name="education"/>
+			<MiningField name="fruits"/>
+			<MiningField name="genhlth"/>
+			<MiningField name="heartdiseaseorattack"/>
+			<MiningField name="highbp"/>
+			<MiningField name="highchol"/>
+			<MiningField name="hvyalcoholconsump"/>
+			<MiningField name="income"/>
+			<MiningField name="menthlth"/>
+			<MiningField name="physactivity"/>
+			<MiningField name="physhlth"/>
+			<MiningField name="sex"/>
+			<MiningField name="smoker"/>
+			<MiningField name="stroke"/>
+			<MiningField name="veggies"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="pmml(prediction)" optype="categorical" dataType="double" isFinalResult="false"/>
+			<OutputField name="prediction" optype="continuous" dataType="double" feature="transformedValue">
+				<MapValues outputColumn="data:output" dataType="double">
+					<FieldColumnPair field="pmml(prediction)" column="data:input"/>
+					<InlineTable>
+						<row>
+							<data:input>0</data:input>
+							<data:output>0</data:output>
+						</row>
+						<row>
+							<data:input>1</data:input>
+							<data:output>1</data:output>
+						</row>
+					</InlineTable>
+				</MapValues>
+			</OutputField>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<LocalTransformations>
+			<DerivedField name="normalizedFeatures[0]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="age"/>
+						<Constant dataType="double">1.0</Constant>
+					</Apply>
+					<Constant dataType="double">12.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[1]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="anyhealthcare"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[2]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="bmi"/>
+						<Constant dataType="double">12.0</Constant>
+					</Apply>
+					<Constant dataType="double">86.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[3]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="cholcheck"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[4]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="diffwalk"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[5]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="education"/>
+						<Constant dataType="double">1.0</Constant>
+					</Apply>
+					<Constant dataType="double">5.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[6]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="fruits"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[7]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="genhlth"/>
+						<Constant dataType="double">1.0</Constant>
+					</Apply>
+					<Constant dataType="double">4.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[8]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="heartdiseaseorattack"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[9]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="highbp"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[10]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="highchol"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[11]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="hvyalcoholconsump"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[12]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="income"/>
+						<Constant dataType="double">1.0</Constant>
+					</Apply>
+					<Constant dataType="double">7.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[13]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="menthlth"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">30.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[14]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="physactivity"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[15]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="physhlth"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">30.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[16]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="sex"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[17]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="smoker"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[18]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="stroke"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="normalizedFeatures[19]" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="veggies"/>
+						<Constant dataType="double">0.0</Constant>
+					</Apply>
+					<Constant dataType="double">1.0</Constant>
+				</Apply>
+			</DerivedField>
+		</LocalTransformations>
+		<RegressionTable intercept="-5.706393063460979" targetCategory="1">
+			<NumericPredictor name="normalizedFeatures[0]" coefficient="1.6570473399285404"/>
+			<NumericPredictor name="normalizedFeatures[1]" coefficient="0.06850427776805298"/>
+			<NumericPredictor name="normalizedFeatures[2]" coefficient="5.899728594508874"/>
+			<NumericPredictor name="normalizedFeatures[3]" coefficient="1.2704712494537769"/>
+			<NumericPredictor name="normalizedFeatures[4]" coefficient="0.10923895227341839"/>
+			<NumericPredictor name="normalizedFeatures[5]" coefficient="-0.17566378605845018"/>
+			<NumericPredictor name="normalizedFeatures[6]" coefficient="-0.051298152174303384"/>
+			<NumericPredictor name="normalizedFeatures[7]" coefficient="2.2392060883892215"/>
+			<NumericPredictor name="normalizedFeatures[8]" coefficient="0.23684625657445188"/>
+			<NumericPredictor name="normalizedFeatures[9]" coefficient="0.7424381768351775"/>
+			<NumericPredictor name="normalizedFeatures[10]" coefficient="0.5786442142827337"/>
+			<NumericPredictor name="normalizedFeatures[11]" coefficient="-0.7501535347983715"/>
+			<NumericPredictor name="normalizedFeatures[12]" coefficient="-0.3862439257918857"/>
+			<NumericPredictor name="normalizedFeatures[13]" coefficient="-0.11838271803931401"/>
+			<NumericPredictor name="normalizedFeatures[14]" coefficient="-0.0457539915782051"/>
+			<NumericPredictor name="normalizedFeatures[15]" coefficient="-0.2159014313725417"/>
+			<NumericPredictor name="normalizedFeatures[16]" coefficient="0.27209436648708385"/>
+			<NumericPredictor name="normalizedFeatures[17]" coefficient="-0.0027792439098027833"/>
+			<NumericPredictor name="normalizedFeatures[18]" coefficient="0.1520811019175609"/>
+			<NumericPredictor name="normalizedFeatures[19]" coefficient="-0.0382719801856823"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.0" targetCategory="0"/>
+	</RegressionModel>
+</PMML>
